@@ -13,10 +13,12 @@ public class Main {
 
     private static ScheduledThreadPoolExecutor singleThread = new ScheduledThreadPoolExecutor(1);
     private static Logger logger  = LoggerFactory.getLogger(Main.class);
+    private static String [] languages = new String[]{"java","javascript"};
+
 
     public static void main(String[] args) {
         long period = 24 * 60 * 60 * 1000;// A Day
         logger.info("Start A Schedule !");
-        singleThread.scheduleAtFixedRate(new TimeJob(), 1000, period, TimeUnit.MILLISECONDS);
+        singleThread.scheduleAtFixedRate(new TimeJob(languages), 1000, period, TimeUnit.MILLISECONDS);
     }
 }

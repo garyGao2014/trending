@@ -3,11 +3,8 @@ package com.gary.search;
 import com.gary.search.utils.GithubUtil;
 import com.gary.search.utils.HttpUtil;
 import com.gary.search.utils.MdFile;
-import com.gary.search.utils.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Properties;
 
 /**
  * Created by gaozhicheng on 2017/3/7.
@@ -15,15 +12,15 @@ import java.util.Properties;
 public class TimeJob implements Runnable {
     private final static String requestGithub = "https://github.com/trending/{language}" ;
     private static Logger logger  = LoggerFactory.getLogger(TimeJob.class);
-    private String [] languages = new String[]{"java","javascript"};
+    private String [] languages ;
+
+    public TimeJob(String[] languages) {
+        this.languages = languages;
+    }
+
     @Override
     public void run() {
         try {
-            Properties prop = PropertiesUtil.loadProperties("trend.properties");
-            String value = prop.getProperty("language");
-            if (value!=null &&!value.equals("")){
-                this.languages = value.split(",");
-            }
             logger.info("Start exec Job !!");
             for (String language : languages){
                 logger.info("get language "+ language);
