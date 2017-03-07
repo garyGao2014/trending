@@ -27,18 +27,4 @@ public class GithubUtil {
             logger.error("Github Util error", e);
         }
     }
-
-    public static void main(String[] args) {
-        Process dir = null;
-        try {
-            String [] cmd = new String[]{"cmd.exe","/c","dir"};
-            dir = Runtime.getRuntime().exec(cmd);
-            byte[] b = new byte[1024];
-            dir.getInputStream().read(b);
-            String str = new String(b,"utf-8");
-            System.out.println(str);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
