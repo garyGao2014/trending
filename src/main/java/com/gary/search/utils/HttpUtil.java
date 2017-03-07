@@ -79,7 +79,7 @@ public class HttpUtil {
     private static String readResponseBody(InputStream inputStream) throws IOException {
         try {
             BufferedReader in = new BufferedReader(
-                    new InputStreamReader(inputStream));
+                    new InputStreamReader(inputStream,"utf-8"));
             String inputLine;
             StringBuffer response = new StringBuffer();
 
@@ -87,6 +87,7 @@ public class HttpUtil {
                 response.append(inputLine);
             }
             in.close();
+            logger.info("##输出流文本##"+response.toString());
             return response.toString();
         } catch (Exception e) {
             logger.error(" Body Stream To String Error", e);

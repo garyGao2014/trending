@@ -25,11 +25,11 @@
 			<outputDirectory>bin</outputDirectory>
 			<fileMode>0770</fileMode>
 		</fileSet>
-		<!--<fileSet>-->
-			<!--<directory>src/main/assembly/conf</directory>-->
-			<!--<outputDirectory>conf</outputDirectory>-->
-			<!--<fileMode>0644</fileMode>-->
-		<!--</fileSet>-->
+		<fileSet>
+			<directory>src/main/assembly/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+			<fileMode>0644</fileMode>
+		</fileSet>
 	</fileSets>
 	<dependencySets>
 		<dependencySet>
