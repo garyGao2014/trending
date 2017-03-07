@@ -35,6 +35,7 @@ public class MdFile implements OutputFile {
     public File genFile() {
         try {
             String dirPath = System.getProperty("user.dir");
+            logger.info("dirpath:"+dirPath);
             String absPath = dirPath + File.separator;
             File file = new File(absPath + fileName);
             if (!file.exists()) {// not exist

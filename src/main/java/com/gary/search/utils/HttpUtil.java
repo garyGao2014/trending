@@ -87,7 +87,6 @@ public class HttpUtil {
                 response.append(inputLine);
             }
             in.close();
-            logger.info("##输出流文本##"+response.toString());
             return response.toString();
         } catch (Exception e) {
             logger.error(" Body Stream To String Error", e);
