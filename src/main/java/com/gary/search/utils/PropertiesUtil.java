@@ -24,6 +24,7 @@ public class PropertiesUtil {
         Properties prop = new Properties();
         InputStream in = null;
         try {
+            logger.info(PropertiesUtil.class.getResource("/").getPath());
             URL url = PropertiesUtil.class.getResource(propertyFileName);
             if (url != null) {
                 in = new FileInputStream(url.getPath());

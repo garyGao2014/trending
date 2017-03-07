@@ -3,8 +3,11 @@ package com.gary.search;
 import com.gary.search.utils.GithubUtil;
 import com.gary.search.utils.HttpUtil;
 import com.gary.search.utils.MdFile;
+import com.gary.search.utils.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Properties;
 
 /**
  * Created by gaozhicheng on 2017/3/7.
@@ -16,6 +19,11 @@ public class TimeJob implements Runnable {
     @Override
     public void run() {
         try {
+            Properties prop = PropertiesUtil.loadProperties("trend.properties");
+            String value = prop.getProperty("language");
+            if (value!=null &&!value.equals("")){
+                this.languages = value.split(",");
+            }
             logger.info("Start exec Job !!");
             for (String language : languages){
                 logger.info("get language "+ language);
