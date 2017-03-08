@@ -50,9 +50,10 @@ public class HttpUtil {
         }
         return conn;
     }
+
     /**
      * Http Get Method
-     *
+     * @param requestUrl
      * @return
      */
     public static String httpGet(String requestUrl) {
