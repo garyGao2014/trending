@@ -20,6 +20,7 @@ if [ ! -d $LOGS_DIR ]; then
 fi
 STDOUT_FILE=$LOGS_DIR/stdout.log
 
+rm -rf trending.jar logs/
 mvn clean package install -Dmaven.test.skip=true
 mv target/trending.jar .
 rm -rf target/
