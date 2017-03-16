@@ -3,9 +3,9 @@ package com.gary.search.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
+import java.io.InputStreamReader;
 
 /**
  * Created by gaozhicheng on 2017/3/6.
@@ -24,7 +24,7 @@ public class GithubUtil {
             logger.info("git add " + fileName + " result : " + addResult);
             Process commitExec = Runtime.getRuntime().exec(git_commit.replace("{date}", date));
             String commitResult = GithubUtil.outputResult(commitExec);
-            logger.info("git commit -m " + date + " result : "+commitResult);
+            logger.info("git commit -m " + date + " result : " + commitResult);
             Process pushExec = Runtime.getRuntime().exec(git_push);
             String pushResult = GithubUtil.outputResult(pushExec);
             logger.info("git push result : " + pushResult);
@@ -34,10 +34,13 @@ public class GithubUtil {
     }
 
     private static String outputResult(Process exec) throws IOException {
-        InputStream inputStream = exec.getInputStream();
-        byte[] b = new byte[1024];
-        inputStream.read(b);
-        String result = new String(b, Charset.forName("UTF-8"));
-        return result;
+        BufferedReader br = new BufferedReader(new InputStreamReader(exec.getInputStream()));
+        StringBuffer sb = new StringBuffer();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        String result = sb.toString();
+        return result ;
     }
 }
